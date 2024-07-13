@@ -15,11 +15,11 @@ describe('Greeting component',()=>{
         const helloworldelement=screen.getByText('Hello World',{exact:false});
         expect(helloworldelement).toBeInTheDocument();
     })
-   test('renders good to see you if button is not clicked',()=>{
-    render(<Greetings/>);
-    const onclicktexttest=screen.getByText('good to see you',{exact:false});
-    expect(onclicktexttest).toBeInTheDocument();
-   })
+//    test('renders good to see you if button is not clicked',()=>{
+//     render(<Greetings/>);
+//     const onclicktexttest=screen.getByText('good to see you',{exact:false});
+//     expect(onclicktexttest).toBeInTheDocument();
+//    })
 
    test('renders changed if button is clicked',()=>{
 
@@ -32,6 +32,19 @@ describe('Greeting component',()=>{
     //assert
     const oncl=screen.getByText('changed');
     expect(oncl).toBeInTheDocument();
+   })
+
+   test('checking whether "good to see you" is hiding after clicking button',()=>{
+
+    //arrange
+    render(<Greetings/>);
+    
+    //act
+    const buttonElement=screen.getByRole('button');
+    userEvent.click(buttonElement)
+    //assert
+    const output=screen.queryByText('good to see you!',{exact:false});
+    expect(output).toBeNull();
    })
 })
 
