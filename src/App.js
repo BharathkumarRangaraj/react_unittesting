@@ -1,11 +1,12 @@
 
 import './App.css';
-import Greetings from './components/Greetings';
+import Async from './comp/Async';
+import Greetings from './comp/Grettings';
 
 function App() {
   return (
     <div className="App">
-      <Greetings/>
+      <Async/>
       
       </div>
   );
